@@ -38,7 +38,7 @@ include "../include/header.php";
 									<div class="modal-body">
 										<div class="form-group">
 											<label>NILAI</label>
-											<input type="number" name="nilai" class="form-control" required>
+											<input type="text" name="nilai" class="form-control" required>
 											<input type="hidden" name="id_siswa" class="form-control" value="<?php echo $siswa1['id_siswa'] ?>">
 										</div>
 									</div>
