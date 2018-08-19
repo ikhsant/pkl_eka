@@ -38,6 +38,9 @@
         <?php if($_SESSION['akses_level'] == 'pembimbing'){ ?>
         <li><a href="pembimbing_menu.php"><i class="fa fa-users"></i> <span>Siswa Dibimbing</span></a></li>
         <?php } ?>
+        <?php if($_SESSION['akses_level'] == 'pengawas'){ ?>
+        <li><a href="pengawas_menu.php"><i class="fa fa-users"></i> <span>Data Siswa PKL</span></a></li>
+        <?php } ?>
         <?php if($_SESSION['akses_level'] == 'siswa'){ ?>
         <li><a href="siswa_list.php"><i class="fa fa-users"></i> <span>Data Diri</span></a></li>
         <?php } ?>

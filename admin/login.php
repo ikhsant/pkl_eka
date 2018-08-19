@@ -55,6 +55,10 @@ $setting = mysqli_fetch_assoc(mysqli_query($conn,'SELECT * FROM setting LIMIT 1'
           $result3 = mysqli_query($conn,"SELECT * FROM pembimbing WHERE username = '$user' AND password = '$pass' ");
           $row3 = mysqli_fetch_assoc($result3);
 
+          // check untuk pengawas
+          $result4 = mysqli_query($conn,"SELECT * FROM pengawas WHERE username = '$user' AND password = '$pass' ");
+          $row4 = mysqli_fetch_assoc($result4);
+
           if(mysqli_num_rows($result) > 0){
             $_SESSION['username'] = $user;
             $_SESSION['foto'] = $row['foto'];
@@ -72,6 +76,7 @@ $setting = mysqli_fetch_assoc(mysqli_query($conn,'SELECT * FROM setting LIMIT 1'
             $_SESSION['pesan'] = 'Selamat Datang '.$row2['nama_siswa'].' !';
         // redirect ke page siswa list
             header("Location: siswa_list.php");
+
           }elseif(mysqli_num_rows($result3) > 0){
             $_SESSION['id_pembimbing'] = $row3['id_pembimbing'];
             $_SESSION['nama'] = $row3['nama_pembimbing'];
@@ -80,6 +85,16 @@ $setting = mysqli_fetch_assoc(mysqli_query($conn,'SELECT * FROM setting LIMIT 1'
             $_SESSION['pesan'] = 'Selamat Datang '.$row3['nama_pembimbing'].' !';
         // redirect ke page pembimbing
             header("Location: pembimbing_menu.php");
+
+            }elseif(mysqli_num_rows($result4) > 0){
+            $_SESSION['id_pengawas'] = $row4['id_pengawas'];
+            $_SESSION['nama'] = $row4['nama_pengawas'];
+            $_SESSION['akses_level'] = "pengawas";
+            $_SESSION['foto'] = $row4['foto'];
+            $_SESSION['pesan'] = 'Selamat Datang '.$row4['nama_pengawas'].' !';
+        // redirect ke page pengawas
+            header("Location: pengawas_menu.php");
+
           }else{
             echo '
             <div class="alert alert-danger"><i class="fa fa-warning"></i> Username atau Password Salah</div>

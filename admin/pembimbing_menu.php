@@ -1,5 +1,5 @@
 <?php
-$title 	= 'Data Siswa';
+$title 	= 'Data Siswa di bimbing';
 include "../include/header.php";
 ?>
 
