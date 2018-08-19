@@ -24,58 +24,81 @@ $setting = mysqli_fetch_assoc(mysqli_query($conn,'SELECT * FROM setting LIMIT 1'
   <!-- iCheck -->
   <link rel="stylesheet" href="../assets/adminlte/plugins/iCheck/square/blue.css">
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
 
   <!-- Google Font -->
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> -->
 </head>
 <body class="hold-transition login-page">
-<div class="login-box">
-  <div class="login-logo">
-    <a href="index.php"><b><?php echo $setting['nama_website'] ?></a>
-  </div>
-  <!-- /.login-logo -->
-  <div class="login-box-body">
-    <p class="login-box-msg">Silahkan login terlebih dahulu</p>
-    <?php
-    if(isset($_POST['submit'])){
-      $user = mysqli_real_escape_string($conn,$_POST["username"]);
-      $pass = mysqli_real_escape_string($conn,sha1($_POST['password']));
-      $sql = "SELECT * FROM user WHERE username = '$user' AND password = '$pass' ";
-      $result = mysqli_query($conn,$sql);
-      $row = mysqli_fetch_assoc($result);
-      if(mysqli_num_rows($result) > 0){
-        $_SESSION['username'] = $user;
-        $_SESSION['foto'] = $row['foto'];
-        $_SESSION['nama'] = $row['nama'];
-        $_SESSION['akses_level'] = $row['akses_level'];
-        $_SESSION['pesan'] = 'Selamat Datang '.$row['nama'].' !';
+  <div class="login-box">
+    <div class="login-logo">
+      <img src="../uploads/<?php echo $setting['logo'] ?>" width="100px">
+      <br>  
+      <a href="index.php"><b><?php echo $setting['nama_website'] ?></a>
+      </div>
+      <!-- /.login-logo -->
+      <div class="login-box-body">
+        <p class="login-box-msg">Silahkan login terlebih dahulu</p>
+        <?php
+        if(isset($_POST['submit'])){
+          $user = mysqli_real_escape_string($conn,$_POST["username"]);
+          $pass = mysqli_real_escape_string($conn,sha1($_POST['password']));
+          $sql = "SELECT * FROM user WHERE username = '$user' AND password = '$pass' ";
+          $result = mysqli_query($conn,$sql);
+          $row = mysqli_fetch_assoc($result);
+
+      // check untuk siswa
+          $pass2 = mysqli_real_escape_string($conn,$_POST['password']);
+          $result2 = mysqli_query($conn,"SELECT * FROM siswa WHERE nis = '$user' AND nis = '$pass2' ");
+          $row2 = mysqli_fetch_assoc($result2);
+
+          // check untuk pembimbing
+          $result3 = mysqli_query($conn,"SELECT * FROM pembimbing WHERE username = '$user' AND password = '$pass' ");
+          $row3 = mysqli_fetch_assoc($result3);
+
+          if(mysqli_num_rows($result) > 0){
+            $_SESSION['username'] = $user;
+            $_SESSION['foto'] = $row['foto'];
+            $_SESSION['nama'] = $row['nama'];
+            $_SESSION['akses_level'] = $row['akses_level'];
+            $_SESSION['pesan'] = 'Selamat Datang '.$row['nama'].' !';
         // Redirect user to index.php
-        header("Location: index.php");
-      }else{
-      echo '
-      <div class="alert alert-danger"><i class="fa fa-warning"></i> Username atau Password Salah</div>
-      ';
-      mysqli_close($conn);
-      }
-    }
-    ?>
-    <form method="post">
-      <div class="form-group has-feedback">
-        <input type="username" class="form-control" placeholder="Username" name="username">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password" name="password">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
-      <div class="row">
-        <div class="col-xs-8">
+            header("Location: index.php");
+          }elseif(mysqli_num_rows($result2) > 0){
+            $_SESSION['id_siswa'] = $row2['id_siswa'];
+            $_SESSION['nis'] = $row2['nis'];
+            $_SESSION['nama'] = $row2['nama_siswa'];
+            $_SESSION['foto'] = $row2['foto'];
+            $_SESSION['akses_level'] = "siswa";
+            $_SESSION['pesan'] = 'Selamat Datang '.$row2['nama_siswa'].' !';
+        // redirect ke page siswa list
+            header("Location: siswa_list.php");
+          }elseif(mysqli_num_rows($result3) > 0){
+            $_SESSION['id_pembimbing'] = $row3['id_pembimbing'];
+            $_SESSION['nama'] = $row3['nama_pembimbing'];
+            $_SESSION['akses_level'] = "pembimbing";
+            $_SESSION['foto'] = $row3['foto'];
+            $_SESSION['pesan'] = 'Selamat Datang '.$row3['nama_pembimbing'].' !';
+        // redirect ke page pembimbing
+            header("Location: pembimbing_menu.php");
+          }else{
+            echo '
+            <div class="alert alert-danger"><i class="fa fa-warning"></i> Username atau Password Salah</div>
+            ';
+            mysqli_close($conn);
+          }
+        }
+        ?>
+        <form method="post">
+          <div class="form-group has-feedback">
+            <input type="username" class="form-control" placeholder="Username" name="username">
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <input type="password" class="form-control" placeholder="Password" name="password">
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+          <div class="row">
+            <div class="col-xs-8">
 <!--           <div class="checkbox icheck">
             <label>
               <input type="checkbox"> Remember Me

@@ -53,7 +53,7 @@ $setting = mysqli_fetch_assoc(mysqli_query($conn,'SELECT * FROM setting LIMIT 1'
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="index.php" class="logo">
+    <a href="#" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>PKL</b>E</span>
       <!-- logo for regular state and mobile devices -->
@@ -83,9 +83,10 @@ $setting = mysqli_fetch_assoc(mysqli_query($conn,'SELECT * FROM setting LIMIT 1'
               <!-- User image -->
               <li class="user-header">
                 <img src="<?php if($_SESSION['foto'] !== ''){ echo '../uploads/'.$_SESSION['foto'] ;}else{ echo '../assets/adminlte/dist/img/user2-160x160.jpg';} ?>" class="img-circle" alt="User Image">
+                  <p><?php echo $_SESSION['nama'] ?></p>
+                  <p><span class="label label-danger"><?php echo $_SESSION['akses_level'] ?></span></p>
 
                <!--  <p>
-                  Alexander Pierce - Web Developer
                   <small>Member since Nov. 2012</small>
                 </p> -->
               </li>

@@ -25,7 +25,7 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MAIN NAVIGATION</li>
+        <?php if($_SESSION['akses_level'] == 'admin'){ ?>
         <li><a href="index.php"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
         <li><a href="siswa.php"><i class="fa fa-users"></i> <span>Siswa</span></a></li>
         <li><a href="pengajuan.php"><i class="fa fa-bookmark"></i> <span>Pengajuan</span></a></li>
@@ -34,6 +34,13 @@
         <li><a href="pengawas.php"><i class="fa fa-user-secret"></i> <span>Pengawas</span></a></li>
         <li><a href="user.php"><i class="fa fa-user"></i> <span>Data User</span></a></li>
         <li><a href="setting.php"><i class="fa fa-gear"></i> <span>Setting</span></a></li>
+        <?php } ?>
+        <?php if($_SESSION['akses_level'] == 'pembimbing'){ ?>
+        <li><a href="pembimbing_menu.php"><i class="fa fa-users"></i> <span>Siswa Dibimbing</span></a></li>
+        <?php } ?>
+        <?php if($_SESSION['akses_level'] == 'siswa'){ ?>
+        <li><a href="siswa_list.php"><i class="fa fa-users"></i> <span>Data Diri</span></a></li>
+        <?php } ?>
       </ul>
     </section>
     <!-- /.sidebar -->

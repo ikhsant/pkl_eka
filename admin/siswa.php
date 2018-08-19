@@ -1,7 +1,6 @@
 <?php
 $title 	= 'Data Siswa';
 include "../include/header.php";
-include "../include/database.php";
 ?>
 
 <?php
