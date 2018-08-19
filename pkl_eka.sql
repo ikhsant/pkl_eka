@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 19, 2018 at 04:56 PM
+-- Generation Time: Aug 19, 2018 at 05:30 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 5.6.36
 
@@ -75,15 +75,16 @@ CREATE TABLE `pengawas` (
   `nama_pengawas` varchar(255) NOT NULL,
   `no_hp` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `foto` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pengawas`
 --
 
-INSERT INTO `pengawas` (`id_pengawas`, `nama_pengawas`, `no_hp`, `username`, `password`) VALUES
-(1, 'Rudi Irawan', '08566451231', 'rudi', '1f53d03209ef868737b2f546e002198b2b4875ac');
+INSERT INTO `pengawas` (`id_pengawas`, `nama_pengawas`, `no_hp`, `username`, `password`, `foto`) VALUES
+(1, 'Rudi Irawan', '08566451231', 'rudi', '1f53d03209ef868737b2f546e002198b2b4875ac', '2f2d0j9pea4g4c4.png');
 
 -- --------------------------------------------------------
 
@@ -155,7 +156,7 @@ CREATE TABLE `siswa` (
 --
 
 INSERT INTO `siswa` (`id_siswa`, `nis`, `nama_siswa`, `jenis_kelamin`, `jurusan`, `id_pembimbing`, `foto`, `tanggal_lahir`, `nilai_pkl`, `nilai`) VALUES
-(1, '123456', 'Reza Abdullah', 'L', 'Perkantoran', '1', '1bcae7zomm800ks.png', '2018-08-12', 0, '');
+(1, '123456', 'Reza Abdullah', 'L', 'Perkantoran', '1', '1bcae7zomm800ks.png', '2018-08-12', 0, '30');
 
 -- --------------------------------------------------------
 
