@@ -36,7 +36,7 @@ if (!empty($_SESSION['error'])) { ?>
               <h3>
                 <?php  
                 $siswa = mysqli_query($conn, "SELECT * FROM siswa");
-                echo count($siswa);
+                echo mysqli_num_rows($siswa);
                 ?>
               </h3>
 
@@ -57,7 +57,7 @@ if (!empty($_SESSION['error'])) { ?>
               <h3>
                 <?php  
                 $pengajuan = mysqli_query($conn, "SELECT * FROM pengajuan");
-                echo count($pengajuan);
+                echo mysqli_num_rows($pengajuan);
                 ?>
               </h3>
 
