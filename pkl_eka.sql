@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 19, 2018 at 05:30 PM
+-- Generation Time: Sep 20, 2018 at 01:32 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 5.6.36
 
@@ -21,6 +21,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `pkl_eka`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kunjungan`
+--
+
+CREATE TABLE `kunjungan` (
+  `id_kunjungan` int(11) NOT NULL,
+  `perusahaan` varchar(255) NOT NULL,
+  `pembimbing` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kunjungan`
+--
+
+INSERT INTO `kunjungan` (`id_kunjungan`, `perusahaan`, `pembimbing`) VALUES
+(1, '1', '1');
 
 -- --------------------------------------------------------
 
@@ -99,16 +118,17 @@ CREATE TABLE `perusahaan` (
   `alamat` varchar(255) NOT NULL,
   `kapasitas` int(11) NOT NULL,
   `telp` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL
+  `email` varchar(255) NOT NULL,
+  `cost` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `perusahaan`
 --
 
-INSERT INTO `perusahaan` (`id_perusahaan`, `id_pengawas`, `nama_perusahaan`, `alamat`, `kapasitas`, `telp`, `email`) VALUES
-(1, '1', 'PT. AMERTA INDONESIA', 'jl Raya Cicurug', 5, '085232156', 'amerta@gmail.com'),
-(2, '1', 'PT. KUKUR INDONESIA', 'jl Raya Cicurug', 5, '085232156', 'amerta@gmail.com');
+INSERT INTO `perusahaan` (`id_perusahaan`, `id_pengawas`, `nama_perusahaan`, `alamat`, `kapasitas`, `telp`, `email`, `cost`) VALUES
+(1, '1', 'PT. AMERTA INDONESIA', 'jl Raya Cicurug', 5, '085232156', 'amerta@gmail.com', '1000000'),
+(2, '1', 'PT. KUKUR INDONESIA', 'jl Raya Cicurug', 5, '085232156', 'amerta@gmail.com', '');
 
 -- --------------------------------------------------------
 
@@ -189,6 +209,12 @@ INSERT INTO `user` (`id_user`, `nama`, `no_hp`, `email`, `username`, `password`,
 --
 
 --
+-- Indexes for table `kunjungan`
+--
+ALTER TABLE `kunjungan`
+  ADD PRIMARY KEY (`id_kunjungan`);
+
+--
 -- Indexes for table `pembimbing`
 --
 ALTER TABLE `pembimbing`
@@ -233,6 +259,12 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `kunjungan`
+--
+ALTER TABLE `kunjungan`
+  MODIFY `id_kunjungan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pembimbing`

@@ -32,6 +32,8 @@
         <li><a href="pembimbing.php"><i class="fa fa-user"></i> <span>Pembimbing</span></a></li>
         <li><a href="perusahaan.php"><i class="fa fa-building"></i> <span>Perusahaan</span></a></li>
         <li><a href="pengawas.php"><i class="fa fa-user-secret"></i> <span>Pengawas</span></a></li>
+        <li><a href="kunjungan.php"><i class="fa fa-car"></i> <span>Kunjungan</span></a></li>
+        <li><a href="honor.php"><i class="fa fa-money"></i> <span>Honor</span></a></li>
         <li><a href="user.php"><i class="fa fa-user"></i> <span>Data User</span></a></li>
         <li><a href="setting.php"><i class="fa fa-gear"></i> <span>Setting</span></a></li>
         <?php } ?>
