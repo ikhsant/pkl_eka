@@ -11,7 +11,6 @@ include "../include/database.php";
 	$xcrud->table_name('Data Pengajuan');
 	$xcrud->relation('id_siswa','siswa','id_siswa','nama_siswa');
 	$xcrud->relation('id_perusahaan','perusahaan','id_perusahaan','nama_perusahaan');
-
     echo $xcrud->render();
 	?>
 

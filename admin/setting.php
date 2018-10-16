@@ -12,9 +12,8 @@ include "../include/database.php";
 	$xcrud->unset_add();
 	$xcrud->unset_title();
 	$xcrud->unset_remove();
-
+	$xcrud->column_name( 'cost', 'Cost per (KM)' );
 	$xcrud->change_type('theme','select','','skin-blue,skin-red');
-
     echo $xcrud->render();
 	?>
 

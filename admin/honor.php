@@ -30,7 +30,7 @@ include "../include/database.php";
 				<tbody>
 					<?php  
 					$perjalanan = mysqli_query($conn, "
-						SELECT kunjungan.*, pembimbing.nama_pembimbing, perusahaan.nama_perusahaan, perusahaan.cost 
+						SELECT kunjungan.*, pembimbing.nama_pembimbing, perusahaan.nama_perusahaan, perusahaan.jarak
 						FROM kunjungan
 						JOIN pembimbing
 						ON pembimbing = id_pembimbing
@@ -38,11 +38,12 @@ include "../include/database.php";
 						ON perusahaan = id_perusahaan
 						");
 					foreach($perjalanan as $perjalanan){
+						$honor = $setting['cost'] * $perjalanan['jarak'];
 					?>
 					<tr>
 						<td><?php echo $perjalanan['nama_pembimbing']; ?></td>
 						<td><?php echo $perjalanan['nama_perusahaan']; ?></td>
-						<td><?php echo $perjalanan['cost']; ?></td>
+						<td><?php echo $honor; ?></td>
 					</tr>
 				<?php } ?>
 				</tbody>

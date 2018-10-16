@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2018 at 01:32 PM
+-- Generation Time: Oct 16, 2018 at 04:27 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 5.6.36
 
@@ -39,7 +39,8 @@ CREATE TABLE `kunjungan` (
 --
 
 INSERT INTO `kunjungan` (`id_kunjungan`, `perusahaan`, `pembimbing`) VALUES
-(1, '1', '1');
+(1, '1', '1'),
+(2, '2', '1');
 
 -- --------------------------------------------------------
 
@@ -119,16 +120,16 @@ CREATE TABLE `perusahaan` (
   `kapasitas` int(11) NOT NULL,
   `telp` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `cost` varchar(255) NOT NULL
+  `jarak` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `perusahaan`
 --
 
-INSERT INTO `perusahaan` (`id_perusahaan`, `id_pengawas`, `nama_perusahaan`, `alamat`, `kapasitas`, `telp`, `email`, `cost`) VALUES
-(1, '1', 'PT. AMERTA INDONESIA', 'jl Raya Cicurug', 5, '085232156', 'amerta@gmail.com', '1000000'),
-(2, '1', 'PT. KUKUR INDONESIA', 'jl Raya Cicurug', 5, '085232156', 'amerta@gmail.com', '');
+INSERT INTO `perusahaan` (`id_perusahaan`, `id_pengawas`, `nama_perusahaan`, `alamat`, `kapasitas`, `telp`, `email`, `jarak`) VALUES
+(1, '1', 'PT. AMERTA INDONESIA', 'jl Raya Cicurug', 5, '085232156', 'amerta@gmail.com', 6),
+(2, '1', 'PT. KUKUR INDONESIA', 'jl Raya Cicurug', 5, '085232156', 'amerta@gmail.com', 50);
 
 -- --------------------------------------------------------
 
@@ -142,15 +143,16 @@ CREATE TABLE `setting` (
   `logo` varchar(255) NOT NULL,
   `alamat` varchar(255) NOT NULL,
   `deskripsi` text NOT NULL,
-  `theme` varchar(255) NOT NULL
+  `theme` varchar(255) NOT NULL,
+  `cost` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `setting`
 --
 
-INSERT INTO `setting` (`id`, `nama_website`, `logo`, `alamat`, `deskripsi`, `theme`) VALUES
-(1, 'PKL EKA', '1dwfpj3bkwdcks.png', 'Jl Raya Ciboalang No 21', 'Sistem Informasi IRO', 'skin-blue');
+INSERT INTO `setting` (`id`, `nama_website`, `logo`, `alamat`, `deskripsi`, `theme`, `cost`) VALUES
+(1, 'PKL EKA', '1dwfpj3bkwdcks.png', 'Jl Raya Ciboalang No 21', 'Sistem Informasi IRO', 'skin-blue', 100000);
 
 -- --------------------------------------------------------
 
@@ -264,7 +266,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `kunjungan`
 --
 ALTER TABLE `kunjungan`
-  MODIFY `id_kunjungan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_kunjungan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pembimbing`
